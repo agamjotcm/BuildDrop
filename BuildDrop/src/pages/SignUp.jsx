@@ -1,24 +1,23 @@
 import React, { useState } from 'react'
 import Header from '../components/Header'
 import { useNavigate } from 'react-router-dom'
-import {getAuth, onAuthStateChanged, signInWithEmailAndPassword} from 'firebase/auth'
+import {createUserWithEmailAndPassword} from 'firebase/auth'
 import {auth} from '../utils/firebase.utils';
 
-function Login() {
+function SignUp() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
-  const onLogin = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     
-   signInWithEmailAndPassword(auth, email, password)
+    await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      navigate("/")
       console.log(user);
+      navigate("/login")
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -43,7 +42,7 @@ function Login() {
               alt="Your Company"
             />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              Sign in to your account
+              Sign up your account
             </h2>
           </div>
   
@@ -72,11 +71,6 @@ function Login() {
                   <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                     Password
                   </label>
-                  <div className="text-sm">
-                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                      Forgot password?
-                    </a>
-                  </div>
                 </div>
                 <div className="mt-2">
                   <input
@@ -94,19 +88,19 @@ function Login() {
   
               <div>
                 <button
-                onClick={onLogin}
+                onClick={onSubmit}
                   type="submit"
                   className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  Sign in
+                    Create New Account
                 </button>
               </div>
             </form>
   
             <p className="mt-10 text-center text-sm text-gray-500">
-              Not a member?{' '}
-              <a href="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                Create a new account instead.
+              Already a member?{' '}
+              <a href="/login" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                Login instead.
               </a>
             </p>
           </div>
@@ -115,6 +109,6 @@ function Login() {
   )
 }
 
-export default Login
+export default SignUp
 
 

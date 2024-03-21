@@ -13,6 +13,9 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import Login from '../pages/Login'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../utils/firebase.utils'
 
 const products = [
   { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -189,12 +192,14 @@ export default function Header() {
                 </a>
               </div>
               <div className="py-6">
-                <a
+               <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
                 </a>
+                
+               
               </div>
             </div>
           </div>
