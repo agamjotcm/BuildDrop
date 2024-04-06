@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import Header from '../components/Header'
-import './css/Home.css'
+import Hero from '../components/Hero'
 
 export class Home extends Component {
   render() {
     return (
       <>
       <Header />
-      <div className='home'>
-        Homesj
+      <div>
+        <Hero />
       </div>
       </>
     )

@@ -5,6 +5,7 @@ darkMode: true,
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+
 }
 

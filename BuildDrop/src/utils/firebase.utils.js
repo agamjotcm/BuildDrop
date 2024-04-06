@@ -32,3 +32,13 @@ export const signInWithGooglePopup = () => signInWithGooglePopup(auth, provider)
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+
+export const isLoggedIn = () =>  {
+    if (!user) {
+        return res.status(401).send('Unauthorized');
+    } else {
+    req.currentUser = user;
+    next(); // User is logged in - Pass to next route handler/middleware
+    }
+}
