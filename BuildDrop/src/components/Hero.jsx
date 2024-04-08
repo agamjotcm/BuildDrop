@@ -45,7 +45,7 @@ function Hero() {
         </span>
         <br />
         <br />
-      <button className="btn btn-wide bg-indigo-600 text-white uppercase">Get free access.</button>
+    <a><button className="btn btn-wide bg-indigo-600 text-white uppercase" >Get free access.</button></a> 
 
       </Animator>
     </ScrollPage>
